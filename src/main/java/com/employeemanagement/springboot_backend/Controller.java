@@ -3,11 +3,7 @@ package com.employeemanagement.springboot_backend;
 import com.employeemanagement.springboot_backend.model.Employee;
 import com.employeemanagement.springboot_backend.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +17,10 @@ public class Controller {
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
         return this.employeeService.getAllEmployees();
+    }
+
+    @PostMapping("/employees")
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeService.createEmployee(employee);
     }
 }
