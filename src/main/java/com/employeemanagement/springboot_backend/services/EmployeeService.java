@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +42,12 @@ public class EmployeeService {
         employee.setEmail(employeeDetail.getEmail());
         this.employeeRepo.save(employee);
         return ResponseEntity.ok(employee);
+    }
+
+    public ResponseEntity<Map<String, Boolean>> DeleteById(@PathVariable Long id) {
+        this.employeeRepo.deleteById(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted Successfully!", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }

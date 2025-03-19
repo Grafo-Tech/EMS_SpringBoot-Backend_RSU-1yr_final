@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -25,14 +26,18 @@ public class Controller {
         return this.employeeService.createEmployee(employee);
     }
 
-    @GetMapping("/employee/{id}")
+    @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> findById(@PathVariable Long id) {
     return this.employeeService.findById(id);
     }
 
-    @PutMapping("employee/{id}")
+    @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> UpdateById(@PathVariable Long id, @RequestBody Employee employeeDetail) {
         return this.employeeService.UpdateById(id, employeeDetail);
     }
 
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<Map<String, Boolean>> DeleteById(@PathVariable Long id) {
+        return this.employeeService.DeleteById(id);
+    }
 }
