@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -20,4 +23,11 @@ public class Employee {
     private String lastName;
     @Column(name = "email")
     private String email;
+    @Column(name = "position")
+    private String position;
+    @Column(name = "gender")
+    private String Gender;
+    @ElementCollection
+    @Column(name = "skills")
+    private List<String> skills;
 }
